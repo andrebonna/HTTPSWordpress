@@ -11,6 +11,7 @@ services:
     restart: always
     environment:
       DOMAINS: '${DOMAIN} -> http://wordpress'
+      STAGE: 'production'
 
   wordpress:
     restart: always
