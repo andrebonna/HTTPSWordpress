@@ -1,0 +1,25 @@
+version: '3.2'
+
+services:
+  https-portal:
+    image: steveltn/https-portal
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - wordpress
+    restart: always
+    environment:
+      DOMAINS: '${DOMAIN} -> http://wordpress'
+
+  wordpress:
+    restart: always
+    image: wordpress
+    environment:
+      WORDPRESS_DB_PASSWORD: S{WORDPRESS_DB_PASSWORD}
+
+  mysql:
+    restart: always
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: S{WORDPRESS_DB_PASSWORD}
