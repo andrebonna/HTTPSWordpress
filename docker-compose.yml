@@ -17,6 +17,8 @@ services:
     image: wordpress
     environment:
       WORDPRESS_DB_PASSWORD: S{WORDPRESS_DB_PASSWORD}
+    volumes:
+    - uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
   mysql:
     restart: always
