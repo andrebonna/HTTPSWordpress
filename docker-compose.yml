@@ -10,6 +10,7 @@ services:
       - wordpress
     restart: always
     environment:
+      CLIENT_MAX_BODY_SIZE: 0
       DOMAINS: '${DOMAIN} -> http://wordpress'
       STAGE: 'production'
 
@@ -19,7 +20,7 @@ services:
     environment:
       WORDPRESS_DB_PASSWORD: S{WORDPRESS_DB_PASSWORD}
     volumes:
-    - uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
+    - ./volumes/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
   mysql:
     restart: always
