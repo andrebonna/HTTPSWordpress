@@ -11,8 +11,9 @@ services:
     restart: always
     environment:
       CLIENT_MAX_BODY_SIZE: 0
-      DOMAINS: '${DOMAIN} -> http://wordpress'
+      DOMAINS: '${DOMAIN} -> http://wordpress, www.${DOMAIN} -> http://wordpress'
       STAGE: 'production'
+      FORCE_RENEW: 'true'
 
   wordpress:
     restart: always
